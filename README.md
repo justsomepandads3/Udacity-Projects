@@ -12,9 +12,14 @@ To show more details, you can click on the photo where it will direct you to ano
 
 # Installation
 To install the project, type:
+
    - npm install
+
 then type to start the project:
-   - npm start 
+
+   - npm start
+
 then go to your browser and type:
+
    - localhost:3000
-and enjoy:
+
