@@ -4,6 +4,7 @@ This is MyRead application which is an application to sort the books into three 
 1. Currently Reading
 2. Want To Read
 3. Read
+
 You can change the books from these three shelves any time you want.
 To add more books, just click the add button at the bottom right, then you can search for the books you need.
 If the book is already sorted in the three shelves, it will appear in the state changer on the book where you can select the state of the book.
