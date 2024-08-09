@@ -1,5 +1,5 @@
 import BookshelfListCard from "./BookshelfListCard";
-import PropType from "prop-type";
+import PropType from "prop-types";
 const BookshelfList = ({books, searchBooks, id},title) =>{
   
   return(
