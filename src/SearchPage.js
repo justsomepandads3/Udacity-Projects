@@ -33,6 +33,17 @@ const SearchPage = ({books}) =>{
     getSearchBooks()
   }},[debounceQuery]);
   // End------------------------------------------------------------------------------
+  //Here is the new Update
+  searchBooks.map((searchBook) =>{
+    const bookFound = books.find((book) => book.id===searchBook.id)
+    if(bookFound){
+      searchBook.shelf=bookFound.shelf
+    }else{
+      searchBook.shelf='none';
+    }
+    
+  })
+ 
   return(
     <div className="search-books">
       <div className="search-books-bar">
@@ -54,7 +65,7 @@ const SearchPage = ({books}) =>{
               
       {!BookNotFound ?  
         (<div className="search-books-results">
-          <BookshelfList books={searchBooks} searchBooks={[...books]} id="search"></BookshelfList>
+          <BookshelfList books={searchBooks} id="search"></BookshelfList>
         </div>) : <h2 className="book-not-found">Book not found</h2>}
                 
               

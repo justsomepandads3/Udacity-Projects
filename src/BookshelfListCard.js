@@ -1,8 +1,17 @@
 import * as BooksAPI from "./BooksAPI"
-
-
-const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) =>{
+import PropType from "prop-types";
+import {Link} from "react-router-dom"
+const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle}) =>{
+  const dataToDetails = {
+    bookTitle:bookTitle, 
+    bookAuthors:bookAuthors, 
+    bookImage:bookImage, 
+    bookDescription:book.description,
+    bookPageCount:book.pageCount,
+    bookDateOfPublication: book.publishedDate
+  }
   //here I refered to the course lesson Hooks 4.5(Perform Side Effects with useEffect) but I didn't use useEffect here
+  
   const updateBookState = (e) =>{
     e.preventDefault();
     const shelf = e.target.value
@@ -13,22 +22,25 @@ const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) 
       
         
   }
+  //Edit: This code was shifted to SearchPage component
+  //==========================================================================
   //This piece of code was inspired by sidonaldson here is the link https://stackoverflow.com/questions/38922998/add-property-to-an-array-of-objects
-  if(!book.shelf){
-    book.shelf="none"
-  };
+  // if(!book.shelf){
+  //   book.shelf="none"
+  // };
 
-  if(searchBooks!==""){
-    //Here I have an issue accessing the array in the normal way, then I found this on redit that fixed the issue
-    //https://www.reddit.com/r/learnjavascript/comments/lra9nj/askjs_why_does_this_simple_foreach_give_error/
-    //which was simply to replace searchBooks to [...searchBooks]
+  // if(searchBooks!==""){
+  //   //Here I have an issue accessing the array in the normal way, then I found this on redit that fixed the issue
+  //   //https://www.reddit.com/r/learnjavascript/comments/lra9nj/askjs_why_does_this_simple_foreach_give_error/
+  //   //which was simply to replace searchBooks to [...searchBooks]
     
-    [...searchBooks].forEach(element => {
-      if(element.title===book.title){
-        book.shelf=element.shelf
-      }
-    });
-  }
+  //   [...searchBooks].forEach(element => {
+  //     if(element.title===book.title){
+  //       book.shelf=element.shelf
+  //     }
+  //   });
+  // }
+  //=========================================================================
   
 
   
@@ -36,7 +48,7 @@ const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) 
 
     <div className="book">
       <div className="book-top">
-        <div
+        <Link
           className="book-cover"
           style={{
             width: 128,
@@ -44,8 +56,10 @@ const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) 
             backgroundImage:
               `url("${bookImage}")`,
           }}
+          to="/details"
+          state={dataToDetails}
               
-        ></div>
+        ></Link>
         <div className="book-shelf-changer">{ 
           //Here I got an issue extracting the value the user selected and found the solution from
           //https://stackoverflow.com/questions/53902859/on-submit-form-couldnt-get-react-select-values
@@ -55,7 +69,7 @@ const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) 
             defaultValue={book.shelf} 
             onChange={updateBookState}>
                 
-            <option value="none" disabled>
+            <option value="moveTo" disabled>
               Move to...
             </option>
             <option value="currentlyReading">
@@ -79,3 +93,9 @@ const BookshelfListCard = ({book,bookAuthors,bookImage,bookTitle, searchBooks}) 
     
 };
 export default BookshelfListCard;
+BookshelfListCard.PropType = {
+  books: PropType.Array,
+  bookAuthors: PropType.String,
+  bookImage: PropType.String,
+  bookTitle: PropType.String
+}

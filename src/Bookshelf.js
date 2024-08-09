@@ -1,7 +1,7 @@
 import BookshelfList from "./BookshelfList";
 import { Link } from "react-router-dom";
 
-const Bookshelf = ({title, books, id, searchBooks}) =>{ 
+const Bookshelf = ({title, books, id}) =>{ 
   
   return(
     <div className="bookshelf">
@@ -12,7 +12,7 @@ const Bookshelf = ({title, books, id, searchBooks}) =>{
           books={books} 
           id={id} 
           title={title}
-          searchBooks={(id==="search" ? [...searchBooks] :"none") }>
+        >
         </BookshelfList>
       </div>
       <div className="open-search">

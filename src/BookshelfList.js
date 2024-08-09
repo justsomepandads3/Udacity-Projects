@@ -1,6 +1,6 @@
 import BookshelfListCard from "./BookshelfListCard";
 import PropType from "prop-types";
-const BookshelfList = ({books, searchBooks, id},title) =>{
+const BookshelfList = ({books, id},title) =>{
   
   return(
     <ul className="books-grid" key={books.id} >{
@@ -18,7 +18,7 @@ const BookshelfList = ({books, searchBooks, id},title) =>{
                 bookTitle={book.title} 
                 bookImage={book.imageLinks.thumbnail}
                 bookAuthors={book.authors}
-                searchBooks={id==="search" ? [...searchBooks] :""}
+             
                 
               ></BookshelfListCard>
             </li>)  

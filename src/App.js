@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Bookshelf from "./Bookshelf"
 import * as BooksAPI from "./BooksAPI"
 import SearchPage from "./SearchPage";
-
+import Details from "./Details"
 function App() {
   const [books, setBooks] = useState([])
   
@@ -67,7 +67,7 @@ function App() {
               books={books} >
             </SearchPage>}
         ></Route>
-        
+        <Route path="/details" element={<Details></Details>}></Route>
       </Routes>
     </div>
   );

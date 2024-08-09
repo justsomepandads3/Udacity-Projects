@@ -185,3 +185,21 @@ body,
   font-size: 29px;
   
 }
+.description{
+  font-family: arial;
+  font-size: 24px;
+  margin: 50px;
+  width: 600px;
+  height: 200px;
+  
+  
+}
+.page-count{
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 20px;
+}
+.book-description{
+  font-size: 1em;
+  color:rgb(211, 216, 220)
+}
